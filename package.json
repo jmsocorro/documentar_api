@@ -1,5 +1,5 @@
 {
-  "name": "logging-y-testing-de-performance",
+  "name": "documentar_api",
   "version": "1.0.0",
   "description": "",
   "main": "./src/app.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jmsocorro/Logging-y-testing-de-performance.git"
+    "url": "git+https://github.com/jmsocorro/documentar_api.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jmsocorro/Logging-y-testing-de-performance.git"
+    "url": "https://github.com/jmsocorro/documentar_api.git"
   },
-  "homepage": "https://github.com/jmsocorro/Logging-y-testing-de-performance.git#readme",
+  "homepage": "https://github.com/jmsocorro/documentar_api.git#readme",
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
     "bcrypt": "^5.1.0",

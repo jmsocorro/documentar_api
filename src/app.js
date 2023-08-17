@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 import passport from "passport";
+import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUiExpress from "swagger-ui-express";
 
 import { Server } from "socket.io";
 
@@ -30,6 +32,21 @@ mongoose.set("strictQuery", false);
 const app = express();
 const logger = createLogger();
 
+const swaggerOptions = {
+    definition: {
+        openapi: "3.1.0",
+        info: {
+            title: "Sinteplast Construccion Ecommerce - Documentation",
+            description:
+                "API para administrar productos, usuarios y pedidos en una aplicación de ecommerce.",
+            version: "1.0.0",
+        },
+    },
+    apis: ['./src/docs/**/*.yaml'],
+};
+const specs = swaggerJSDoc(swaggerOptions);
+app.use("/docs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -42,7 +59,7 @@ app.use(
         secret: config.SESSION_SECRET,
         resave: true,
         saveUninitialized: true,
-    }),
+    })
 );
 
 initializePassport();
@@ -62,7 +79,7 @@ app.use("/loggerTest", passportAuthenticate("jwt"), logRouter);
 app.use(
     "/realtimeproducts",
     passportAuthenticate("jwt"),
-    realTimeProductsRouter,
+    realTimeProductsRouter
 );
 app.use(express.static(__dirname + "/public"));
 app.use(errorHandler);
